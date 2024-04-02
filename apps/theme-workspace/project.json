@@ -1,0 +1,59 @@
+{
+  "name": "theme-workspace",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/theme-workspace/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/theme-workspace",
+        "main": "apps/theme-workspace/src/main.ts",
+        "tsConfig": "apps/theme-workspace/tsconfig.app.json",
+        "assets": ["apps/theme-workspace/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/theme-workspace/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "defaultConfiguration": "development",
+      "options": {
+        "commands": ["nest start --watch"],
+        "cwd": "./",
+        "parallel": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "theme-workspace:build:development"
+        },
+        "production": {
+          "buildTarget": "theme-workspace:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/theme-workspace/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/theme-workspace/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
