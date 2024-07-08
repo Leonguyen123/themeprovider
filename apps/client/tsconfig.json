@@ -17,14 +17,29 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"],
+    "types": [
+      "jest",
+      "node"
+    ],
     "paths": {
-      "@main/*": ["*"],
-      "@app/*": ["app/*"],
-      "@pages/*": ["app/pages/*"],
-      "@components/*": ["components/*"],
-      "@layouts/*": ["app/layouts/*"],
-      "@utils/*": ["utils/*"]
+      "@main/*": [
+        "*"
+      ],
+      "@app/*": [
+        "app/*"
+      ],
+      "@pages/*": [
+        "pages/*"
+      ],
+      "@components/*": [
+        "app/_components/*"
+      ],
+      "@layouts/*": [
+        "app/layouts/*"
+      ],
+      "@utils/*": [
+        "utils/*"
+      ]
     }
   },
   "include": [
@@ -34,7 +49,8 @@
     "**/*.jsx",
     "../../apps/client/.next/types/**/*.ts",
     "../../dist/apps/client/.next/types/**/*.ts",
-    "next-env.d.ts"
+    "next-env.d.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

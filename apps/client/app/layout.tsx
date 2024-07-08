@@ -1,7 +1,7 @@
 import './global.css';
 import '../assets/css/bootstrap.min.css'
-
-import Header from '@layouts/header';
+import { Footer, Header } from '@main/app/_components/layouts';
+import Provider from '@main/app/_providers'
 
 export const metadata = {
   title: 'Welcome to client',
@@ -15,11 +15,16 @@ export default function RootLayout({
 }) {
 
   return (
-    <>
-     <html>
-      <Header/>
-        <main>{children}</main>
+      <html>
+        <body>
+          <Header/>
+            <main>
+              <Provider>
+                {children}     
+              </Provider>
+            </main>
+          <Footer/>
+        </body>
       </html>
-    </>
   );
 } 

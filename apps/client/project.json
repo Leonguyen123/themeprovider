@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/client",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/next:build",
@@ -51,19 +52,13 @@
     },
     "lint": {
       "executor": "@nx/eslint:lint",
-      "outputs": ["{options.outputFile}"],
-      "options": {
-        "lintFilePatterns": ["apps/client/**/*.{ts,tsx,js,jsx}"]
-      }
+      "outputs": ["{options.outputFile}"]
     },
-    "created": {
+    "dev": {
       "executor": "nx:run-commands",
-      "defaultConfiguration": "development",
       "options": {
-        "script": ["next dev"],
-        "cwd": "./app/client"
+        "command": "next dev"
       }
     }
-  },
-  "tags": []
+  }
 }

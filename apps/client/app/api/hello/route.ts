@@ -1,3 +1,5 @@
 export async function GET(request: Request) {
-  return new Response('Hello, from API!');
+  const x = 10
+  console.log('x')
+  return new Response('Hello, from API!')
 }

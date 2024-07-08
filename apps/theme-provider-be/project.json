@@ -1,0 +1,52 @@
+{
+  "name": "theme-provider-be",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/theme-provider-be/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/theme-provider-be",
+        "main": "apps/theme-provider-be/src/main.ts",
+        "tsConfig": "apps/theme-provider-be/tsconfig.app.json",
+        "assets": ["apps/theme-provider-be/src/assets"],
+        "webpackConfig": "apps/theme-provider-be/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "theme-provider-be:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "theme-provider-be:build:development"
+        },
+        "production": {
+          "buildTarget": "theme-provider-be:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/theme-provider-be/jest.config.ts"
+      }
+    }
+  }
+}
